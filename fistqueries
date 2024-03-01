@@ -88,3 +88,19 @@ SELECT
   MAX(price) AS themost_expensive
 FROM 
   secondpro-414618.carss.car_info
+
+Second week :OrderBy
+
+SELECT
+  County_of_Residence,
+  Births,
+  Ave_Age_of_Mother,
+  Ave_Pre_pregnancy_BMI
+FROM `bigquery-public-data.sdoh_cdc_wonder_natality.county_natality` 
+WHERE
+  County_of_Residence in( 'Erie County, NY', 'Niagara County, NY','Chautauqua County, NY')
+ORDER BY 
+  Births DESC, 
+  Year
+LIMIT 5 
+
