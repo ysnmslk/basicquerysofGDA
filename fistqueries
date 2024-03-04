@@ -104,3 +104,73 @@ ORDER BY
   Year
 LIMIT 5 
 
+
+3. hafta
+
+SELECT 
+  employee.name AS employee_name,
+  employee.role AS employee_role,
+  departments.name AS department_name
+
+FROM `secondpro-414618.employee_data.employee` AS employee
+INNER JOIN
+  `secondpro-414618.employee_data.departments` AS departments
+  ON employee.department_id =departments.department_id
+
+
+SELECT 
+  employee.name AS employee_name,
+  employee.role AS employee_role,
+  departments.name AS department_name
+
+FROM `secondpro-414618.employee_data.employee` AS employee
+LEFT JOIN
+  `secondpro-414618.employee_data.departments` AS departments
+  ON employee.department_id =departments.department_id
+
+
+  
+SELECT 
+  employee.name AS employee_name,
+  employee.role AS employee_role,
+  departments.name AS department_name
+
+FROM `secondpro-414618.employee_data.employee` AS employee
+RIGHT JOIN
+  `secondpro-414618.employee_data.departments` AS departments
+  ON employee.department_id =departments.department_id
+
+  
+SELECT 
+  employee.name AS employee_name,
+  employee.role AS employee_role,
+  departments.name AS department_name
+
+FROM `secondpro-414618.employee_data.employee` AS employee
+FULL OUTER JOIN
+  `secondpro-414618.employee_data.departments` AS departments
+  ON employee.department_id =departments.department_id
+
+
+
+
+
+SELECT
+ seasons.market AS university,
+ seasons.name AS team_name,
+ mascots.mascot AS team_mascot,
+ AVG(seasons.wins) AS avg_wins,
+ AVG(seasons.losses) AS avg_losses,
+ AVG(seasons.ties) AS avg_ties
+FROM `bigquery-public-data.ncaa_basketball.mbb_historical_teams_seasons` AS seasons
+INNER JOIN `bigquery-public-data.ncaa_basketball.mascots` AS mascots
+ON seasons.team_id = mascots.id
+WHERE seasons.season BETWEEN 1990 AND 1999
+ AND seasons.division = 1
+ GROUP BY 1,2,3
+ORDER BY avg_wins DESC, university
+
+
+
+
+
